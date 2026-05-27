@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snapchat - Sign In</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .tpl-page-snapchat {
+            background: #000000;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Avenir Next', sans-serif;
+        }
+        .tpl-card-snapchat {
+            background: #000;
+            border-radius: 0;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: none;
+            border: none;
+        }
+        .tpl-logo-snapchat {
+            width: 60px;
+            height: 60px;
+            background: #fffc00;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            color: #000;
+            font-weight: 400;
+            margin: 0 auto 20px;
+            background: #fffc00;
+        }
+        .tpl-title-snapchat {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            
+        }
+        .tpl-subtitle-snapchat {
+            text-align: center;
+            color: #888;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+        .tpl-input-snapchat {
+            width: 100%;
+            padding: 14px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 15px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            
+        }
+        .tpl-input-snapchat:focus {
+            border-color: #fffc00;
+            box-shadow: 0 0 0 3px #fffc0030;
+        }
+        .tpl-btn-snapchat {
+            width: 100%;
+            padding: 14px;
+            background: #fffc00;
+            border: none;
+            border-radius: 24px;
+            color: #000;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            
+        }
+        .tpl-btn-snapchat:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .tpl-footer-snapchat {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+            font-size: 14px;
+        }
+        .tpl-footer-snapchat a {
+            color: #fffc00;
+            text-decoration: none;
+        }
+        .tpl-divider-snapchat {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #888;
+            font-size: 13px;
+        }
+        .tpl-divider-snapchat::before,
+        .tpl-divider-snapchat::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #333;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tpl-page-snapchat">
+        <div class="tpl-card-snapchat">
+            <div class="tpl-logo-snapchat">👻</div>
+            <div class="tpl-title-snapchat">Snapchat</div>
+            <div class="tpl-subtitle-snapchat">The fastest way to share a moment!</div>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" class="tpl-input-snapchat" placeholder="Username or Email" required>
+<input type="password" class="tpl-input-snapchat" placeholder="Password" required>
+
+                <button type="submit" class="tpl-btn-snapchat">Sign In</button>
+            </form>
+
+            <div class="tpl-divider-snapchat">or</div>
+
+            <div class="tpl-footer-snapchat">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p style="margin-top: 10px;"><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('This is a demo template. Data captured successfully!');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fire - Sign In</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .tpl-page-freefire {
+            background: #1a0a00;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Rajdhani', sans-serif;
+        }
+        .tpl-card-freefire {
+            background: #1a0a00;
+            border-radius: 12px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 40px rgba(255,107,0,0.2);
+            border: 1px solid rgba(255,107,0,0.3);
+        }
+        .tpl-logo-freefire {
+            width: 70px;
+            height: 70px;
+            background: #ff6b00;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            color: #ff6b00;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            border: 2px solid #ff6b00;
+        }
+        .tpl-title-freefire {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: #ff6b00;
+            margin-bottom: 8px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .tpl-subtitle-freefire {
+            text-align: center;
+            color: #8892a0;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .tpl-input-freefire {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,107,0,0.3);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 15px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            
+        }
+        .tpl-input-freefire:focus {
+            border-color: #ff6b00;
+            box-shadow: 0 0 0 3px #ff6b0030;
+        }
+        .tpl-btn-freefire {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #ff6b00, #ff3300);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .tpl-btn-freefire:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .tpl-footer-freefire {
+            text-align: center;
+            margin-top: 20px;
+            color: #8892a0;
+            font-size: 13px;
+        }
+        .tpl-footer-freefire a {
+            color: #ff6b00;
+            text-decoration: none;
+        }
+        .tpl-divider-freefire {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #8892a0;
+            font-size: 13px;
+        }
+        .tpl-divider-freefire::before,
+        .tpl-divider-freefire::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255,107,0,0.2);
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tpl-page-freefire">
+        <div class="tpl-card-freefire">
+            <div class="tpl-logo-freefire">🔥</div>
+            <div class="tpl-title-freefire">Free Fire</div>
+            <div class="tpl-subtitle-freefire">The Ultimate Survival Shooter</div>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" class="tpl-input-freefire" placeholder="Username or Email" required>
+<input type="password" class="tpl-input-freefire" placeholder="Password" required>
+
+                <button type="submit" class="tpl-btn-freefire">Sign In</button>
+            </form>
+
+            <div class="tpl-divider-freefire">or</div>
+
+            <div class="tpl-footer-freefire">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p style="margin-top: 10px;"><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('This is a demo template. Data captured successfully!');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

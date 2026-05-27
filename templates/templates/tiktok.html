@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok - Sign In</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .tpl-page-tiktok {
+            background: #000000;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Proxima Nova', sans-serif;
+        }
+        .tpl-card-tiktok {
+            background: #000;
+            border-radius: 8px;
+            padding: 40px;
+            width: 100%;
+            max-width: 375px;
+            box-shadow: none;
+            border: 1px solid #333;
+        }
+        .tpl-logo-tiktok {
+            width: 60px;
+            height: 60px;
+            background: #000000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: #fff;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            border: 2px solid #fff;
+        }
+        .tpl-title-tiktok {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            
+        }
+        .tpl-subtitle-tiktok {
+            text-align: center;
+            color: #888;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+        .tpl-input-tiktok {
+            width: 100%;
+            padding: 14px;
+            background: #222;
+            border: 1px solid #333;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 15px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            
+        }
+        .tpl-input-tiktok:focus {
+            border-color: #000000;
+            box-shadow: 0 0 0 3px #00000030;
+        }
+        .tpl-btn-tiktok {
+            width: 100%;
+            padding: 14px;
+            background: #fe2c55;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            
+        }
+        .tpl-btn-tiktok:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .tpl-footer-tiktok {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+            font-size: 14px;
+        }
+        .tpl-footer-tiktok a {
+            color: #000000;
+            text-decoration: none;
+        }
+        .tpl-divider-tiktok {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #888;
+            font-size: 13px;
+        }
+        .tpl-divider-tiktok::before,
+        .tpl-divider-tiktok::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #333;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tpl-page-tiktok">
+        <div class="tpl-card-tiktok">
+            <div class="tpl-logo-tiktok">♪</div>
+            <div class="tpl-title-tiktok">TikTok</div>
+            <div class="tpl-subtitle-tiktok">Make Your Day</div>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" class="tpl-input-tiktok" placeholder="Email or username" required>
+<input type="password" class="tpl-input-tiktok" placeholder="Password" required>
+
+                <button type="submit" class="tpl-btn-tiktok">Sign In</button>
+            </form>
+
+            <div class="tpl-divider-tiktok">or</div>
+
+            <div class="tpl-footer-tiktok">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p style="margin-top: 10px;"><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('This is a demo template. Data captured successfully!');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

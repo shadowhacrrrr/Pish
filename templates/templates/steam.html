@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam - Sign In</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .tpl-page-steam {
+            background: #171a21;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Motiva Sans', sans-serif;
+        }
+        .tpl-card-steam {
+            background: #171a21;
+            border-radius: 0;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: none;
+            border: 1px solid #2a2f3a;
+        }
+        .tpl-logo-steam {
+            width: 60px;
+            height: 60px;
+            background: #1b2838;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            color: #fff;
+            font-weight: 400;
+            margin: 0 auto 20px;
+            
+        }
+        .tpl-title-steam {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 300;
+            color: #c6d4df;
+            margin-bottom: 8px;
+            
+        }
+        .tpl-subtitle-steam {
+            text-align: center;
+            color: #8f98a0;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .tpl-input-steam {
+            width: 100%;
+            padding: 10px;
+            background: #32353c;
+            border: none;
+            border-radius: 2px;
+            color: #c6d4df;
+            font-size: 15px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            
+        }
+        .tpl-input-steam:focus {
+            border-color: #1b2838;
+            box-shadow: 0 0 0 3px #1b283830;
+        }
+        .tpl-btn-steam {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #47bfff, #1a44c2);
+            border: none;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            
+        }
+        .tpl-btn-steam:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .tpl-footer-steam {
+            text-align: center;
+            margin-top: 20px;
+            color: #8f98a0;
+            font-size: 14px;
+        }
+        .tpl-footer-steam a {
+            color: #1b2838;
+            text-decoration: none;
+        }
+        .tpl-divider-steam {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #8f98a0;
+            font-size: 13px;
+        }
+        .tpl-divider-steam::before,
+        .tpl-divider-steam::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #2a2f3a;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tpl-page-steam">
+        <div class="tpl-card-steam">
+            <div class="tpl-logo-steam">🎮</div>
+            <div class="tpl-title-steam">Steam</div>
+            <div class="tpl-subtitle-steam">Sign in to Steam</div>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" class="tpl-input-steam" placeholder="Steam account name" required>
+<input type="password" class="tpl-input-steam" placeholder="Password" required>
+
+                <button type="submit" class="tpl-btn-steam">Sign In</button>
+            </form>
+
+            <div class="tpl-divider-steam">or</div>
+
+            <div class="tpl-footer-steam">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p style="margin-top: 10px;"><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('This is a demo template. Data captured successfully!');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox - Sign In</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .tpl-page-roblox {
+            background: #dee1e3;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'HCo Gotham', sans-serif;
+        }
+        .tpl-card-roblox {
+            background: #fff;
+            border-radius: 8px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border: none;
+        }
+        .tpl-logo-roblox {
+            width: 60px;
+            height: 60px;
+            background: #000000;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            color: #fff;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            background: #000;
+        }
+        .tpl-title-roblox {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 8px;
+            
+        }
+        .tpl-subtitle-roblox {
+            text-align: center;
+            color: #606162;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .tpl-input-roblox {
+            width: 100%;
+            padding: 12px;
+            background: #fff;
+            border: 1px solid #b8b8b8;
+            border-radius: 8px;
+            color: #111;
+            font-size: 16px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            
+        }
+        .tpl-input-roblox:focus {
+            border-color: #000000;
+            box-shadow: 0 0 0 3px #00000030;
+        }
+        .tpl-btn-roblox {
+            width: 100%;
+            padding: 12px;
+            background: #dee1e3;
+            border: none;
+            border-radius: 8px;
+            color: #111;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            
+        }
+        .tpl-btn-roblox:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .tpl-footer-roblox {
+            text-align: center;
+            margin-top: 20px;
+            color: #606162;
+            font-size: 14px;
+        }
+        .tpl-footer-roblox a {
+            color: #000000;
+            text-decoration: none;
+        }
+        .tpl-divider-roblox {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #606162;
+            font-size: 13px;
+        }
+        .tpl-divider-roblox::before,
+        .tpl-divider-roblox::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #dee1e3;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tpl-page-roblox">
+        <div class="tpl-card-roblox">
+            <div class="tpl-logo-roblox">R</div>
+            <div class="tpl-title-roblox">Roblox</div>
+            <div class="tpl-subtitle-roblox">Powering Imagination</div>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" class="tpl-input-roblox" placeholder="Username" required>
+<input type="password" class="tpl-input-roblox" placeholder="Password" required>
+
+                <button type="submit" class="tpl-btn-roblox">Sign In</button>
+            </form>
+
+            <div class="tpl-divider-roblox">or</div>
+
+            <div class="tpl-footer-roblox">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p style="margin-top: 10px;"><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('This is a demo template. Data captured successfully!');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoom - Sign In</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .tpl-page-zoom {
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Lato', sans-serif;
+        }
+        .tpl-card-zoom {
+            background: #fff;
+            border-radius: 0;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: none;
+            border: none;
+        }
+        .tpl-logo-zoom {
+            width: 60px;
+            height: 60px;
+            background: #2d8cff;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            color: #2d8cff;
+            font-weight: 400;
+            margin: 0 auto 20px;
+            
+        }
+        .tpl-title-zoom {
+            text-align: center;
+            font-size: 0px;
+            font-weight: 0;
+            color: transparent;
+            margin-bottom: 8px;
+            display: none;
+        }
+        .tpl-subtitle-zoom {
+            text-align: center;
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+        .tpl-input-zoom {
+            width: 100%;
+            padding: 12px;
+            background: #fff;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            color: #333;
+            font-size: 15px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            
+        }
+        .tpl-input-zoom:focus {
+            border-color: #2d8cff;
+            box-shadow: 0 0 0 3px #2d8cff30;
+        }
+        .tpl-btn-zoom {
+            width: 100%;
+            padding: 12px;
+            background: #2d8cff;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            
+        }
+        .tpl-btn-zoom:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .tpl-footer-zoom {
+            text-align: center;
+            margin-top: 20px;
+            color: #2d8cff;
+            font-size: 14px;
+        }
+        .tpl-footer-zoom a {
+            color: #2d8cff;
+            text-decoration: none;
+        }
+        .tpl-divider-zoom {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #999;
+            font-size: 13px;
+        }
+        .tpl-divider-zoom::before,
+        .tpl-divider-zoom::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #ddd;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tpl-page-zoom">
+        <div class="tpl-card-zoom">
+            <div class="tpl-logo-zoom">📹</div>
+            <div class="tpl-title-zoom">Zoom</div>
+            <div class="tpl-subtitle-zoom">Sign in to Zoom</div>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" class="tpl-input-zoom" placeholder="Email Address" required>
+<input type="password" class="tpl-input-zoom" placeholder="Password" required>
+
+                <button type="submit" class="tpl-btn-zoom">Sign In</button>
+            </form>
+
+            <div class="tpl-divider-zoom">or</div>
+
+            <div class="tpl-footer-zoom">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p style="margin-top: 10px;"><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('This is a demo template. Data captured successfully!');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

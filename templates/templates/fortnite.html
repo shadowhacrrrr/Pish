@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortnite - Sign In</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .tpl-page-fortnite {
+            background: #1a1a2e;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Burbank Big', sans-serif;
+        }
+        .tpl-card-fortnite {
+            background: rgba(26,26,46,0.95);
+            border-radius: 8px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 40px rgba(157,77,187,0.3);
+            border: 1px solid rgba(157,77,187,0.3);
+        }
+        .tpl-logo-fortnite {
+            width: 70px;
+            height: 70px;
+            background: #9d4dbb;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            color: #9d4dbb;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            border: 2px solid #9d4dbb;
+        }
+        .tpl-title-fortnite {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 8px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .tpl-subtitle-fortnite {
+            text-align: center;
+            color: #8892a0;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .tpl-input-fortnite {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(157,77,187,0.3);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 15px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            
+        }
+        .tpl-input-fortnite:focus {
+            border-color: #9d4dbb;
+            box-shadow: 0 0 0 3px #9d4dbb30;
+        }
+        .tpl-btn-fortnite {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #9d4dbb, #ff6b00);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .tpl-btn-fortnite:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .tpl-footer-fortnite {
+            text-align: center;
+            margin-top: 20px;
+            color: #8892a0;
+            font-size: 13px;
+        }
+        .tpl-footer-fortnite a {
+            color: #9d4dbb;
+            text-decoration: none;
+        }
+        .tpl-divider-fortnite {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #8892a0;
+            font-size: 13px;
+        }
+        .tpl-divider-fortnite::before,
+        .tpl-divider-fortnite::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(157,77,187,0.2);
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tpl-page-fortnite">
+        <div class="tpl-card-fortnite">
+            <div class="tpl-logo-fortnite">🎮</div>
+            <div class="tpl-title-fortnite">Fortnite</div>
+            <div class="tpl-subtitle-fortnite">Sign in to Epic Games</div>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" class="tpl-input-fortnite" placeholder="Email" required>
+<input type="password" class="tpl-input-fortnite" placeholder="Password" required>
+
+                <button type="submit" class="tpl-btn-fortnite">Sign In</button>
+            </form>
+
+            <div class="tpl-divider-fortnite">or</div>
+
+            <div class="tpl-footer-fortnite">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p style="margin-top: 10px;"><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('This is a demo template. Data captured successfully!');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

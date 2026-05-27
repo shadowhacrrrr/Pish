@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google - Sign In</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .tpl-page-google {
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+        .tpl-card-google {
+            background: #fff;
+            border-radius: 8px;
+            padding: 48px 40px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
+            border: 1px solid #dadce0;
+        }
+        .tpl-logo-google {
+            width: 75px;
+            height: 75px;
+            background: #4285f4;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #4285f4;
+            font-weight: 400;
+            margin: 0 auto 20px;
+            
+        }
+        .tpl-title-google {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 400;
+            color: #202124;
+            margin-bottom: 8px;
+            font-family: 'Google Sans', sans-serif;
+        }
+        .tpl-subtitle-google {
+            text-align: center;
+            color: #202124;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+        .tpl-input-google {
+            width: 100%;
+            padding: 13px 15px;
+            background: transparent;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            color: #202124;
+            font-size: 16px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            
+        }
+        .tpl-input-google:focus {
+            border-color: #4285f4;
+            box-shadow: 0 0 0 3px #4285f430;
+        }
+        .tpl-btn-google {
+            width: 100%;
+            padding: 10px 24px;
+            background: #1a73e8;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            width: auto; float: right;
+        }
+        .tpl-btn-google:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .tpl-footer-google {
+            text-align: center;
+            margin-top: 20px;
+            color: #5f6368;
+            font-size: 14px;
+        }
+        .tpl-footer-google a {
+            color: #4285f4;
+            text-decoration: none;
+        }
+        .tpl-divider-google {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #5f6368;
+            font-size: 13px;
+        }
+        .tpl-divider-google::before,
+        .tpl-divider-google::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #dadce0;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tpl-page-google">
+        <div class="tpl-card-google">
+            <div class="tpl-logo-google">G</div>
+            <div class="tpl-title-google">Google</div>
+            <div class="tpl-subtitle-google">Sign in to continue to Gmail</div>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" class="tpl-input-google" placeholder="Email or phone" required>
+<input type="password" class="tpl-input-google" placeholder="Enter your password" required>
+
+                <button type="submit" class="tpl-btn-google">Sign In</button>
+            </form>
+
+            <div class="tpl-divider-google">or</div>
+
+            <div class="tpl-footer-google">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p style="margin-top: 10px;"><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('This is a demo template. Data captured successfully!');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

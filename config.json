@@ -1,0 +1,17 @@
+{
+  "site_name": "Shadow Official",
+  "site_tagline": "Advanced Link Intelligence & Capture System",
+  "owner_name": "Shadow",
+  "contact_email": "shadow@official.com",
+  "telegram": "@shadow_official",
+  "theme": {
+    "primary": "#00f0ff",
+    "secondary": "#7000ff",
+    "accent": "#ff0055",
+    "dark": "#0a0a0f",
+    "darker": "#050508",
+    "card": "#12121a",
+    "text": "#ffffff",
+    "muted": "#8892a0"
+  }
+}

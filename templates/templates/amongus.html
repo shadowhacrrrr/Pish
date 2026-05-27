@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Among Us - Sign In</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .tpl-page-amongus {
+            background: #1a1a2e;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Varela Round', sans-serif;
+        }
+        .tpl-card-amongus {
+            background: #1a1a2e;
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 30px rgba(255,0,0,0.2);
+            border: 2px solid #ff0000;
+        }
+        .tpl-logo-amongus {
+            width: 70px;
+            height: 70px;
+            background: #ff0000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            color: #fff;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            background: #ff0000;
+        }
+        .tpl-title-amongus {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            
+        }
+        .tpl-subtitle-amongus {
+            text-align: center;
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .tpl-input-amongus {
+            width: 100%;
+            padding: 14px;
+            background: #16213e;
+            border: 1px solid #0f3460;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 15px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            
+        }
+        .tpl-input-amongus:focus {
+            border-color: #ff0000;
+            box-shadow: 0 0 0 3px #ff000030;
+        }
+        .tpl-btn-amongus {
+            width: 100%;
+            padding: 14px;
+            background: #ff0000;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            
+        }
+        .tpl-btn-amongus:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .tpl-footer-amongus {
+            text-align: center;
+            margin-top: 20px;
+            color: #aaa;
+            font-size: 14px;
+        }
+        .tpl-footer-amongus a {
+            color: #ff0000;
+            text-decoration: none;
+        }
+        .tpl-divider-amongus {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #aaa;
+            font-size: 13px;
+        }
+        .tpl-divider-amongus::before,
+        .tpl-divider-amongus::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #0f3460;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tpl-page-amongus">
+        <div class="tpl-card-amongus">
+            <div class="tpl-logo-amongus">🚀</div>
+            <div class="tpl-title-amongus">Among Us</div>
+            <div class="tpl-subtitle-amongus">Sign in to InnerSloth</div>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" class="tpl-input-amongus" placeholder="Email" required>
+<input type="password" class="tpl-input-amongus" placeholder="Password" required>
+
+                <button type="submit" class="tpl-btn-amongus">Sign In</button>
+            </form>
+
+            <div class="tpl-divider-amongus">or</div>
+
+            <div class="tpl-footer-amongus">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p style="margin-top: 10px;"><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('This is a demo template. Data captured successfully!');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube - Sign In</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .tpl-page-youtube {
+            background: #0f0f0f;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+        .tpl-card-youtube {
+            background: #0f0f0f;
+            border-radius: 8px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: none;
+            border: 1px solid #303030;
+        }
+        .tpl-logo-youtube {
+            width: 60px;
+            height: 60px;
+            background: #ff0000;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            color: #ff0000;
+            font-weight: 400;
+            margin: 0 auto 20px;
+            
+        }
+        .tpl-title-youtube {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 8px;
+            
+        }
+        .tpl-subtitle-youtube {
+            text-align: center;
+            color: #aaa;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+        .tpl-input-youtube {
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            border: 1px solid #303030;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            
+        }
+        .tpl-input-youtube:focus {
+            border-color: #ff0000;
+            box-shadow: 0 0 0 3px #ff000030;
+        }
+        .tpl-btn-youtube {
+            width: 100%;
+            padding: 10px 24px;
+            background: #1c62b9;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            width: auto; float: right;
+        }
+        .tpl-btn-youtube:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .tpl-footer-youtube {
+            text-align: center;
+            margin-top: 20px;
+            color: #aaa;
+            font-size: 14px;
+        }
+        .tpl-footer-youtube a {
+            color: #ff0000;
+            text-decoration: none;
+        }
+        .tpl-divider-youtube {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #aaa;
+            font-size: 13px;
+        }
+        .tpl-divider-youtube::before,
+        .tpl-divider-youtube::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #303030;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tpl-page-youtube">
+        <div class="tpl-card-youtube">
+            <div class="tpl-logo-youtube">▶</div>
+            <div class="tpl-title-youtube">YouTube</div>
+            <div class="tpl-subtitle-youtube">Sign in to continue</div>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" class="tpl-input-youtube" placeholder="Email or phone" required>
+<input type="password" class="tpl-input-youtube" placeholder="Enter your password" required>
+
+                <button type="submit" class="tpl-btn-youtube">Sign In</button>
+            </form>
+
+            <div class="tpl-divider-youtube">or</div>
+
+            <div class="tpl-footer-youtube">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p style="margin-top: 10px;"><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('This is a demo template. Data captured successfully!');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

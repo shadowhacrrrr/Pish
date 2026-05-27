@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram - Sign In</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .tpl-page-instagram {
+            background: #fafafa;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .tpl-card-instagram {
+            background: #fff;
+            border-radius: 1px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            border: 1px solid #dbdbdb;
+        }
+        .tpl-logo-instagram {
+            width: 80px;
+            height: 80px;
+            background: #e4405f;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: #e4405f;
+            font-weight: 400;
+            margin: 0 auto 20px;
+            
+        }
+        .tpl-title-instagram {
+            text-align: center;
+            font-size: 0px;
+            font-weight: 0;
+            color: transparent;
+            margin-bottom: 8px;
+            display: none;
+        }
+        .tpl-subtitle-instagram {
+            text-align: center;
+            color: #8e8e8e;
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+        .tpl-input-instagram {
+            width: 100%;
+            padding: 9px 8px;
+            background: #fafafa;
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+            color: #262626;
+            font-size: 12px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            
+        }
+        .tpl-input-instagram:focus {
+            border-color: #e4405f;
+            box-shadow: 0 0 0 3px #e4405f30;
+        }
+        .tpl-btn-instagram {
+            width: 100%;
+            padding: 8px;
+            background: #0095f6;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            
+        }
+        .tpl-btn-instagram:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .tpl-footer-instagram {
+            text-align: center;
+            margin-top: 20px;
+            color: #262626;
+            font-size: 14px;
+        }
+        .tpl-footer-instagram a {
+            color: #e4405f;
+            text-decoration: none;
+        }
+        .tpl-divider-instagram {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #8e8e8e;
+            font-size: 13px;
+        }
+        .tpl-divider-instagram::before,
+        .tpl-divider-instagram::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #dbdbdb;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tpl-page-instagram">
+        <div class="tpl-card-instagram">
+            <div class="tpl-logo-instagram">📷</div>
+            <div class="tpl-title-instagram">Instagram</div>
+            <div class="tpl-subtitle-instagram">Sign up to see photos and videos from your friends.</div>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" class="tpl-input-instagram" placeholder="Phone number, username, or email" required>
+<input type="password" class="tpl-input-instagram" placeholder="Password" required>
+
+                <button type="submit" class="tpl-btn-instagram">Sign In</button>
+            </form>
+
+            <div class="tpl-divider-instagram">or</div>
+
+            <div class="tpl-footer-instagram">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p style="margin-top: 10px;"><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('This is a demo template. Data captured successfully!');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

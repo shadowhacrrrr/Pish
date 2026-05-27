@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ config.site_name }} - Sign Up</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-icon">🚀</div>
+            <div class="auth-title">Create Account</div>
+            <div class="auth-subtitle">Join {{ config.site_name }}</div>
+
+            <form method="POST" action="/signup" id="signupForm">
+                <div class="auth-input-group">
+                    <input type="text" name="username" class="auth-input" placeholder="Choose Username" required autocomplete="off">
+                </div>
+                <div class="auth-input-group">
+                    <input type="email" name="email" class="auth-input" placeholder="Email Address" required>
+                </div>
+                <div class="auth-input-group">
+                    <input type="password" name="password" class="auth-input" placeholder="Create Password" required>
+                </div>
+                <button type="submit" class="auth-btn">🚀 Sign Up</button>
+            </form>
+
+            {% if error %}
+            <div class="auth-error show">{{ error }}</div>
+            {% endif %}
+
+            <div class="auth-divider">or</div>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="/login">Login</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

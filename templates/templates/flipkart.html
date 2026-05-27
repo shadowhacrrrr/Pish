@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipkart - Sign In</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .tpl-page-flipkart {
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+        .tpl-card-flipkart {
+            background: #fff;
+            border-radius: 2px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            border: none;
+        }
+        .tpl-logo-flipkart {
+            width: 60px;
+            height: 60px;
+            background: #2874f0;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            color: #2874f0;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            
+        }
+        .tpl-title-flipkart {
+            text-align: center;
+            font-size: 0px;
+            font-weight: 0;
+            color: transparent;
+            margin-bottom: 8px;
+            display: none;
+        }
+        .tpl-subtitle-flipkart {
+            text-align: center;
+            color: #212121;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+        .tpl-input-flipkart {
+            width: 100%;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 2px;
+            color: #212121;
+            font-size: 14px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            
+        }
+        .tpl-input-flipkart:focus {
+            border-color: #2874f0;
+            box-shadow: 0 0 0 3px #2874f030;
+        }
+        .tpl-btn-flipkart {
+            width: 100%;
+            padding: 12px;
+            background: #fb641b;
+            border: none;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            
+        }
+        .tpl-btn-flipkart:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .tpl-footer-flipkart {
+            text-align: center;
+            margin-top: 20px;
+            color: #2874f0;
+            font-size: 14px;
+        }
+        .tpl-footer-flipkart a {
+            color: #2874f0;
+            text-decoration: none;
+        }
+        .tpl-divider-flipkart {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #878787;
+            font-size: 13px;
+        }
+        .tpl-divider-flipkart::before,
+        .tpl-divider-flipkart::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e0e0e0;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tpl-page-flipkart">
+        <div class="tpl-card-flipkart">
+            <div class="tpl-logo-flipkart">F</div>
+            <div class="tpl-title-flipkart">Flipkart</div>
+            <div class="tpl-subtitle-flipkart">Login for the best experience</div>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" class="tpl-input-flipkart" placeholder="Enter Email/Mobile number" required>
+<input type="password" class="tpl-input-flipkart" placeholder="Enter Password" required>
+
+                <button type="submit" class="tpl-btn-flipkart">Sign In</button>
+            </form>
+
+            <div class="tpl-divider-flipkart">or</div>
+
+            <div class="tpl-footer-flipkart">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p style="margin-top: 10px;"><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('This is a demo template. Data captured successfully!');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

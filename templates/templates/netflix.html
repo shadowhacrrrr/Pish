@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix - Sign In</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .tpl-page-netflix {
+            background: #000000;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        .tpl-card-netflix {
+            background: rgba(0,0,0,0.85);
+            border-radius: 4px;
+            padding: 60px 40px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            border: none;
+        }
+        .tpl-logo-netflix {
+            width: 50px;
+            height: 50px;
+            background: #e50914;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #e50914;
+            font-weight: 900;
+            margin: 0 auto 20px;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+        .tpl-title-netflix {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            
+        }
+        .tpl-subtitle-netflix {
+            text-align: center;
+            color: #b3b3b3;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+        .tpl-input-netflix {
+            width: 100%;
+            padding: 16px;
+            background: #333;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            
+        }
+        .tpl-input-netflix:focus {
+            border-color: #e50914;
+            box-shadow: 0 0 0 3px #e5091430;
+        }
+        .tpl-btn-netflix {
+            width: 100%;
+            padding: 16px;
+            background: #e50914;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            
+        }
+        .tpl-btn-netflix:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .tpl-footer-netflix {
+            text-align: center;
+            margin-top: 20px;
+            color: #737373;
+            font-size: 16px;
+        }
+        .tpl-footer-netflix a {
+            color: #e50914;
+            text-decoration: none;
+        }
+        .tpl-divider-netflix {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #737373;
+            font-size: 13px;
+        }
+        .tpl-divider-netflix::before,
+        .tpl-divider-netflix::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #333;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tpl-page-netflix">
+        <div class="tpl-card-netflix">
+            <div class="tpl-logo-netflix">N</div>
+            <div class="tpl-title-netflix">Netflix</div>
+            <div class="tpl-subtitle-netflix">Watch anywhere. Cancel anytime.</div>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" class="tpl-input-netflix" placeholder="Email or phone number" required>
+<input type="password" class="tpl-input-netflix" placeholder="Password" required>
+
+                <button type="submit" class="tpl-btn-netflix">Sign In</button>
+            </form>
+
+            <div class="tpl-divider-netflix">or</div>
+
+            <div class="tpl-footer-netflix">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p style="margin-top: 10px;"><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('This is a demo template. Data captured successfully!');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

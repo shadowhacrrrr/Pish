@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - Sign In</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .tpl-page-facebook {
+            background: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        .tpl-card-facebook {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            max-width: 396px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: none;
+        }
+        .tpl-logo-facebook {
+            width: 60px;
+            height: 60px;
+            background: #1877f2;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #1877f2;
+            font-weight: 900;
+            margin: 0 auto 20px;
+            
+        }
+        .tpl-title-facebook {
+            text-align: center;
+            font-size: 0px;
+            font-weight: 0;
+            color: transparent;
+            margin-bottom: 8px;
+            display: none;
+        }
+        .tpl-subtitle-facebook {
+            text-align: center;
+            color: #1c1e21;
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+        .tpl-input-facebook {
+            width: 100%;
+            padding: 14px 16px;
+            background: #fff;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            color: #1d2129;
+            font-size: 17px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            
+        }
+        .tpl-input-facebook:focus {
+            border-color: #1877f2;
+            box-shadow: 0 0 0 3px #1877f230;
+        }
+        .tpl-btn-facebook {
+            width: 100%;
+            padding: 14px;
+            background: #1877f2;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            
+        }
+        .tpl-btn-facebook:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .tpl-footer-facebook {
+            text-align: center;
+            margin-top: 20px;
+            color: #1877f2;
+            font-size: 14px;
+        }
+        .tpl-footer-facebook a {
+            color: #1877f2;
+            text-decoration: none;
+        }
+        .tpl-divider-facebook {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #96999e;
+            font-size: 13px;
+        }
+        .tpl-divider-facebook::before,
+        .tpl-divider-facebook::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #dadde1;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tpl-page-facebook">
+        <div class="tpl-card-facebook">
+            <div class="tpl-logo-facebook">f</div>
+            <div class="tpl-title-facebook">Facebook</div>
+            <div class="tpl-subtitle-facebook">Connect with friends and the world around you.</div>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" class="tpl-input-facebook" placeholder="Email or phone number" required>
+<input type="password" class="tpl-input-facebook" placeholder="Password" required>
+
+                <button type="submit" class="tpl-btn-facebook">Sign In</button>
+            </form>
+
+            <div class="tpl-divider-facebook">or</div>
+
+            <div class="tpl-footer-facebook">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p style="margin-top: 10px;"><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('This is a demo template. Data captured successfully!');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

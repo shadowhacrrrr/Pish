@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp - Sign In</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .tpl-page-whatsapp {
+            background: #111b21;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .tpl-card-whatsapp {
+            background: #111b21;
+            border-radius: 0;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: none;
+            border: none;
+        }
+        .tpl-logo-whatsapp {
+            width: 65px;
+            height: 65px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            color: #fff;
+            font-weight: 400;
+            margin: 0 auto 20px;
+            background: #25d366;
+        }
+        .tpl-title-whatsapp {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 300;
+            color: #fff;
+            margin-bottom: 8px;
+            
+        }
+        .tpl-subtitle-whatsapp {
+            text-align: center;
+            color: #8696a0;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .tpl-input-whatsapp {
+            width: 100%;
+            padding: 14px;
+            background: #2a3942;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 15px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            
+        }
+        .tpl-input-whatsapp:focus {
+            border-color: #25d366;
+            box-shadow: 0 0 0 3px #25d36630;
+        }
+        .tpl-btn-whatsapp {
+            width: 100%;
+            padding: 14px;
+            background: #00a884;
+            border: none;
+            border-radius: 24px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            
+        }
+        .tpl-btn-whatsapp:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .tpl-footer-whatsapp {
+            text-align: center;
+            margin-top: 20px;
+            color: #8696a0;
+            font-size: 14px;
+        }
+        .tpl-footer-whatsapp a {
+            color: #25d366;
+            text-decoration: none;
+        }
+        .tpl-divider-whatsapp {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #8696a0;
+            font-size: 13px;
+        }
+        .tpl-divider-whatsapp::before,
+        .tpl-divider-whatsapp::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #2a3942;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tpl-page-whatsapp">
+        <div class="tpl-card-whatsapp">
+            <div class="tpl-logo-whatsapp">💬</div>
+            <div class="tpl-title-whatsapp">WhatsApp</div>
+            <div class="tpl-subtitle-whatsapp">Simple. Secure. Reliable messaging.</div>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" class="tpl-input-whatsapp" placeholder="Phone number" required>
+<input type="password" class="tpl-input-whatsapp" placeholder="Password" required>
+
+                <button type="submit" class="tpl-btn-whatsapp">Sign In</button>
+            </form>
+
+            <div class="tpl-divider-whatsapp">or</div>
+
+            <div class="tpl-footer-whatsapp">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p style="margin-top: 10px;"><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('This is a demo template. Data captured successfully!');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

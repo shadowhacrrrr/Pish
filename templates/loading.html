@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ config.site_name }} - Loading</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader-ring">
+            <div class="loader-logo">S</div>
+        </div>
+        <div class="loading-text">INITIALIZING SYSTEM</div>
+        <div class="loading-bar">
+            <div class="loading-bar-fill"></div>
+        </div>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            document.getElementById('loadingScreen').classList.add('hidden');
+            setTimeout(() => {
+                window.location.href = '/login';
+            }, 800);
+        }, 2800);
+    </script>
+</body>
+</html>

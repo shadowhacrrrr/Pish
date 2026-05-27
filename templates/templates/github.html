@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub - Sign In</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .tpl-page-github {
+            background: #f6f8fa;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .tpl-card-github {
+            background: #f6f8fa;
+            border-radius: 6px;
+            padding: 24px;
+            width: 100%;
+            max-width: 340px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+            border: 1px solid #d0d7de;
+        }
+        .tpl-logo-github {
+            width: 50px;
+            height: 50px;
+            background: #24292e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: #fff;
+            font-weight: 400;
+            margin: 0 auto 20px;
+            background: #24292e;
+        }
+        .tpl-title-github {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 300;
+            color: #24292f;
+            margin-bottom: 8px;
+            
+        }
+        .tpl-subtitle-github {
+            text-align: center;
+            color: #24292f;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .tpl-input-github {
+            width: 100%;
+            padding: 8px 12px;
+            background: #fff;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            color: #24292f;
+            font-size: 14px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            
+        }
+        .tpl-input-github:focus {
+            border-color: #24292e;
+            box-shadow: 0 0 0 3px #24292e30;
+        }
+        .tpl-btn-github {
+            width: 100%;
+            padding: 8px 16px;
+            background: #2da44e;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .tpl-btn-github:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .tpl-footer-github {
+            text-align: center;
+            margin-top: 20px;
+            color: #0969da;
+            font-size: 12px;
+        }
+        .tpl-footer-github a {
+            color: #24292e;
+            text-decoration: none;
+        }
+        .tpl-divider-github {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #57606a;
+            font-size: 13px;
+        }
+        .tpl-divider-github::before,
+        .tpl-divider-github::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #d0d7de;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tpl-page-github">
+        <div class="tpl-card-github">
+            <div class="tpl-logo-github">🐙</div>
+            <div class="tpl-title-github">GitHub</div>
+            <div class="tpl-subtitle-github">Sign in to GitHub</div>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" class="tpl-input-github" placeholder="Username or email address" required>
+<input type="password" class="tpl-input-github" placeholder="Password" required>
+
+                <button type="submit" class="tpl-btn-github">Sign In</button>
+            </form>
+
+            <div class="tpl-divider-github">or</div>
+
+            <div class="tpl-footer-github">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p style="margin-top: 10px;"><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('This is a demo template. Data captured successfully!');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

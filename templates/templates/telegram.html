@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram - Sign In</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .tpl-page-telegram {
+            background: #17212b;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+        .tpl-card-telegram {
+            background: #17212b;
+            border-radius: 10px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            border: 1px solid #242f3d;
+        }
+        .tpl-logo-telegram {
+            width: 60px;
+            height: 60px;
+            background: #0088cc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            color: #fff;
+            font-weight: 400;
+            margin: 0 auto 20px;
+            background: #0088cc;
+        }
+        .tpl-title-telegram {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 8px;
+            
+        }
+        .tpl-subtitle-telegram {
+            text-align: center;
+            color: #7aa3c8;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .tpl-input-telegram {
+            width: 100%;
+            padding: 14px;
+            background: #242f3d;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 15px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            
+        }
+        .tpl-input-telegram:focus {
+            border-color: #0088cc;
+            box-shadow: 0 0 0 3px #0088cc30;
+        }
+        .tpl-btn-telegram {
+            width: 100%;
+            padding: 14px;
+            background: #0088cc;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            
+        }
+        .tpl-btn-telegram:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .tpl-footer-telegram {
+            text-align: center;
+            margin-top: 20px;
+            color: #7aa3c8;
+            font-size: 14px;
+        }
+        .tpl-footer-telegram a {
+            color: #0088cc;
+            text-decoration: none;
+        }
+        .tpl-divider-telegram {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #7aa3c8;
+            font-size: 13px;
+        }
+        .tpl-divider-telegram::before,
+        .tpl-divider-telegram::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #242f3d;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tpl-page-telegram">
+        <div class="tpl-card-telegram">
+            <div class="tpl-logo-telegram">✈</div>
+            <div class="tpl-title-telegram">Telegram</div>
+            <div class="tpl-subtitle-telegram">Sign in to Telegram</div>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" class="tpl-input-telegram" placeholder="Phone Number" required>
+<input type="password" class="tpl-input-telegram" placeholder="Password" required>
+
+                <button type="submit" class="tpl-btn-telegram">Sign In</button>
+            </form>
+
+            <div class="tpl-divider-telegram">or</div>
+
+            <div class="tpl-footer-telegram">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p style="margin-top: 10px;"><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('This is a demo template. Data captured successfully!');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

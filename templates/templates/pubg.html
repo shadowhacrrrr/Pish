@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUBG Mobile - Sign In</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .tpl-page-pubg {
+            background: #1a1a2e;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Rajdhani', sans-serif;
+        }
+        .tpl-card-pubg {
+            background: rgba(26,26,46,0.95);
+            border-radius: 12px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 40px rgba(242,169,0,0.2);
+            border: 1px solid rgba(242,169,0,0.3);
+        }
+        .tpl-logo-pubg {
+            width: 70px;
+            height: 70px;
+            background: #f2a900;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            color: #f2a900;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            border: 2px solid #f2a900;
+        }
+        .tpl-title-pubg {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: #f2a900;
+            margin-bottom: 8px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .tpl-subtitle-pubg {
+            text-align: center;
+            color: #8892a0;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .tpl-input-pubg {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(242,169,0,0.3);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 15px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            
+        }
+        .tpl-input-pubg:focus {
+            border-color: #f2a900;
+            box-shadow: 0 0 0 3px #f2a90030;
+        }
+        .tpl-btn-pubg {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #f2a900, #ff6b00);
+            border: none;
+            border-radius: 8px;
+            color: #000;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .tpl-btn-pubg:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .tpl-footer-pubg {
+            text-align: center;
+            margin-top: 20px;
+            color: #8892a0;
+            font-size: 13px;
+        }
+        .tpl-footer-pubg a {
+            color: #f2a900;
+            text-decoration: none;
+        }
+        .tpl-divider-pubg {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #8892a0;
+            font-size: 13px;
+        }
+        .tpl-divider-pubg::before,
+        .tpl-divider-pubg::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(242,169,0,0.2);
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tpl-page-pubg">
+        <div class="tpl-card-pubg">
+            <div class="tpl-logo-pubg">🎮</div>
+            <div class="tpl-title-pubg">PUBG Mobile</div>
+            <div class="tpl-subtitle-pubg">Winner Winner Chicken Dinner!</div>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" class="tpl-input-pubg" placeholder="Username or Email" required>
+<input type="password" class="tpl-input-pubg" placeholder="Password" required>
+
+                <button type="submit" class="tpl-btn-pubg">Sign In</button>
+            </form>
+
+            <div class="tpl-divider-pubg">or</div>
+
+            <div class="tpl-footer-pubg">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p style="margin-top: 10px;"><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('This is a demo template. Data captured successfully!');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
